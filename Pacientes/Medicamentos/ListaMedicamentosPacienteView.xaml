@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:medicamentos="clr-namespace:Hmed.Pacientes.Medicamentos;assembly=Hmed"
+             x:Class="Hmed.Pacientes.Medicamentos.ListaMedicamentosPacienteView">
+    <ContentView.Content>
+        <ListView                 
+                ItemsSource="{Binding Medicamentos}"
+                SeparatorColor="{DynamicResource CinzaClaroV2}"
+                Margin="16,0" 
+                ItemSelected="OnMedicamentoClicked"
+                x:Name="ListaMedicamentos"
+                RowHeight="60"                
+                HeightRequest="{Binding ListaMedicamentosHeight}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <medicamentos:MedicamentosPacienteItemTemplateView></medicamentos:MedicamentosPacienteItemTemplateView>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </ContentView.Content>
+</ContentView>

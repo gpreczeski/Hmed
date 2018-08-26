@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Hmed.Main.MainPageMaster"
+             Title="Menu"             
+             xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions">
+    <StackLayout BackgroundColor="{DynamicResource Primaria}" Padding="16" Spacing="0">
+        <StackLayout>
+            <StackLayout.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding NavegarParaOPerfil}"></TapGestureRecognizer>
+            </StackLayout.GestureRecognizers>
+            <controls:CircleImage 
+                HorizontalOptions="Center"                
+                Margin="0,30,0,0"
+                BorderThickness="2" 
+                BorderColor="#FFF"             
+                WidthRequest="105" 
+                HeightRequest="105"
+                FillColor="{DynamicResource CinzaClaro}"               
+                Source="{Binding Medico.FotoFormatada}"
+                Aspect="AspectFill">
+                <!--<controls:CircleImage.Aspect>
+                    <OnPlatform x:TypeArguments="Aspect">
+                        <On Platform="Android">AspectFill</On>
+                        <On Platform="iOS">AspectFill</On>
+                    </OnPlatform>
+                </controls:CircleImage.Aspect>-->
+            </controls:CircleImage>
+
+            <!--<Image Source="ic_person_white.png" WidthRequest="105" HeightRequest="105" HorizontalOptions="Center" Margin="0,30,0,0"></Image>-->
+            <Label
+            Margin="0"
+            HorizontalTextAlignment="Center"
+            FontSize="20"
+                TextColor="#FFFFFF"
+                Text="{Binding Medico.NomeFormatado}">
+            </Label>
+            <Label
+            HorizontalTextAlignment="Center"
+            TextColor="#FFFFFF"
+                Text="{Binding Medico.Email}">
+            </Label>
+        </StackLayout>
+        <BoxView HeightRequest="1" Margin="0,16" WidthRequest="46" Color="White" HorizontalOptions="Center"></BoxView>
+
+        <ListView
+            x:Name="MenuItemsListView"
+            HasUnevenRows="true"
+            ItemsSource="{Binding MenuItems}"
+            SeparatorVisibility="None"            
+            RowHeight="40"
+            BackgroundColor="{DynamicResource Primaria}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout HeightRequest="40" 
+                                     Orientation="Horizontal">
+
+                            <Image Source="{Binding Image}" 
+                                   Margin="16,0,0,0" 
+                                   HeightRequest="30" 
+                                   WidthRequest="30"></Image>
+                            <Label TextColor="#FFF" 
+                                   Text="{Binding Title}" 
+                                   Margin="6,0,0,0" 
+                                   VerticalTextAlignment="Center" 
+                                   VerticalOptions="FillAndExpand" 
+                                   FontSize="17" />
+
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+
+    </StackLayout>
+</ContentPage>

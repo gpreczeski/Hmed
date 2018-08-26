@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:exames="clr-namespace:Hmed.Pacientes.Exames;assembly=Hmed"
+             xmlns:medicamentos="clr-namespace:Hmed.Pacientes.Medicamentos;assembly=Hmed"
+             xmlns:documentosEletronicos="clr-namespace:Hmed.Pacientes.DocumentosEletronicos;assembly=Hmed"
+             x:Class="Hmed.Pacientes.DetalhesPacientePage"
+             Title="">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout HeightRequest="45" 
+                         VerticalOptions="Start"
+                         BackgroundColor="{DynamicResource Primaria}"
+                         Spacing="0">
+                <AbsoluteLayout HorizontalOptions="CenterAndExpand">
+                    <Frame                        
+                        OutlineColor="{DynamicResource CinzaEscuro}"
+                            WidthRequest="110"
+                            HeightRequest="60"
+                            CornerRadius="9"
+                            BackgroundColor="{ DynamicResource CinzaEscuro }"
+                            Padding="10" Margin="0,0,0,20">
+                        
+                        <Label TextColor="{DynamicResource CinzaClaroV2}"                                   
+                                   Text="{Binding LabelFormatado }"
+                                   HorizontalTextAlignment="Center"
+                                   VerticalOptions="CenterAndExpand"
+                                   FontSize="15" />
+                    </Frame>
+                </AbsoluteLayout>
+            </StackLayout>
+            <Label 
+                TextColor="{DynamicResource Primaria}" 
+                Text="{Binding Paciente.Nome}" 
+                HorizontalTextAlignment="Center"
+                HorizontalOptions="CenterAndExpand"                
+                VerticalOptions="Start"
+                FontSize="28"
+                Margin="0,35,0,0"/>
+
+            <ScrollView
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="Start"
+                Margin="0,6,0,0">
+
+                <StackLayout Padding="0,0,0,10">
+                    <Label FontSize="14"
+                           Margin="0,0,0,0"
+                           TextColor="{DynamicResource Primaria}"
+                           HorizontalOptions="CenterAndExpand"
+                           IsVisible="{Binding TemDadosMedicos}"
+                           VerticalOptions="StartAndExpand" >Dados Médicos</Label>
+
+                    <BoxView HeightRequest="1"
+                             IsVisible="{Binding TemDadosMedicos}"
+                             WidthRequest="310"
+                             HorizontalOptions="Center"
+                             Color="{DynamicResource Primaria}"
+                             VerticalOptions="StartAndExpand"/>
+
+                    <StackLayout Orientation="Horizontal" Margin="10" IsVisible="{Binding TemDadosMedicos}">
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" >
+                            <StackLayout >
+                                <Label Style="{DynamicResource LabelDetalhes}"
+                       FontAttributes="Bold" MinimumWidthRequest="100" HeightRequest="{Binding TamanhoPrimeiraLinha}" HorizontalTextAlignment="End" IsVisible="{Binding TemAtendimento}">Atendimento:</Label>
+                                <Label Style="{DynamicResource LabelDetalhes}"
+                       FontAttributes="Bold" MinimumWidthRequest="100" HeightRequest="{Binding TamanhoQuartaLinha}" HorizontalTextAlignment="End" IsVisible="{Binding TemUnidade}">Unidade:</Label>
+                            </StackLayout>
+                            <StackLayout WidthRequest="100">
+                                <Label x:Name="lblC1L1" Style="{DynamicResource LabelDetalhes}" SizeChanged="SizeChanged1" Text="{Binding Paciente.Atendimento}" HorizontalTextAlignment="Start" IsVisible="{Binding TemAtendimendo}"/>
+                                <Label x:Name="lblC1L4" Style="{DynamicResource LabelDetalhes}" SizeChanged="SizeChanged4" Text="{Binding Paciente.UnidadeInternacao}" HorizontalTextAlignment="Start" IsVisible="{Binding TemUnidade}"/>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                                <StackLayout>
+                                    <Label Style="{DynamicResource LabelDetalhes}"
+                           FontAttributes="Bold" MinimumWidthRequest="100" HeightRequest="{Binding TamanhoPrimeiraLinha}" HorizontalTextAlignment="End" IsVisible="{Binding TemProntuario}" VerticalOptions="StartAndExpand">Prontuário:</Label>
+                                    <Label Style="{DynamicResource LabelDetalhes}"
+                       FontAttributes="Bold" MinimumWidthRequest="100" HeightRequest="{Binding TamanhoQuartaLinha}" HorizontalTextAlignment="End" IsVisible="{Binding TemTipagem}">Tipagem:</Label>
+                                </StackLayout>
+                                <StackLayout>
+                                    <Label x:Name="lblC2L1" Style="{DynamicResource LabelDetalhes}" SizeChanged="SizeChanged1" Text="{Binding Paciente.Prontuario}" HorizontalTextAlignment="Start" VerticalOptions="StartAndExpand" IsVisible="{Binding TemProntuario}"/>
+                                    <Label x:Name="lblC2L4" Style="{DynamicResource LabelDetalhes}" SizeChanged="SizeChanged4" Text="{Binding Paciente.TipoSanguineo}" HorizontalTextAlignment="Start" IsVisible="{Binding TemTipagem}"/>
+                                </StackLayout>
+                            </StackLayout>
+                        </StackLayout>
+                    </StackLayout>
+
+
+                    <StackLayout 
+                    Padding="0,0,0,10">
+                    <Label FontSize="14"
+                           Margin="0,0,0,0"
+                           TextColor="{DynamicResource Primaria}"
+                           HorizontalOptions="CenterAndExpand"
+                           VerticalOptions="StartAndExpand">Dados Pessoais</Label>
+                    <BoxView HeightRequest="1"
+                             WidthRequest="310"
+                             HorizontalOptions="Center"
+                             Color="{DynamicResource Primaria}"
+                             VerticalOptions="StartAndExpand"/>
+                        
+                    <StackLayout Orientation="Horizontal" Margin="10">
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Margin="30,0,0,0" WidthRequest="130">
+                            
+                            <StackLayout HorizontalOptions="End">                               
+                                <Label Style="{DynamicResource LabelDetalhes}"
+                       FontAttributes="Bold" MinimumWidthRequest="100" HeightRequest="{Binding TamanhoSegundaLinha}" HorizontalTextAlignment="End">Idade:</Label>
+                                <Label Style="{DynamicResource LabelDetalhes}"
+                       FontAttributes="Bold" MinimumWidthRequest="100" HeightRequest="{Binding TamanhoTerceiraLinha}" HorizontalTextAlignment="End">Sexo:</Label>
+                            </StackLayout>
+                            <StackLayout  HorizontalOptions="End">
+                                <Label x:Name="lblC1L2" Style="{DynamicResource LabelDetalhes}" SizeChanged="SizeChanged2" Text="{Binding Paciente.Idade}" HorizontalTextAlignment="Start"/>
+                                <Label x:Name="lblC1L3" Style="{DynamicResource LabelDetalhes}" SizeChanged="SizeChanged3" Text="{Binding Paciente.Sexo}" HorizontalTextAlignment="Start"/>
+                            </StackLayout>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" WidthRequest="180">
+                            <StackLayout>
+                                <Label Style="{DynamicResource LabelDetalhes}"
+                           FontAttributes="Bold" MinimumWidthRequest="100" HeightRequest="{Binding TamanhoSegundaLinha}" HorizontalTextAlignment="End">Telefone:</Label>
+                                <Label Style="{DynamicResource LabelDetalhes}"
+                           FontAttributes="Bold" MinimumWidthRequest="100" HeightRequest="{Binding TamanhoTerceiraLinha }" HorizontalTextAlignment="End">Convênio:</Label>
+                            </StackLayout>
+                            <StackLayout>
+                                <Label x:Name="lblC2L2" Style="{DynamicResource LabelDetalhes}" SizeChanged="SizeChanged2" Text="{Binding Paciente.Telefone}" HorizontalTextAlignment="Start"/>
+                                <Label x:Name="lblC2L3" Style="{DynamicResource LabelDetalhes}" SizeChanged="SizeChanged3" Text="{Binding Paciente.Convenio}" HorizontalTextAlignment="Start"/>
+                            </StackLayout>
+                        </StackLayout>
+                    </StackLayout>
+
+                    <Label FontSize="14"
+                           Margin="0,0,0,0"
+                           TextColor="{DynamicResource Primaria}"
+                           HorizontalOptions="CenterAndExpand"
+                           VerticalOptions="StartAndExpand">Exames</Label>
+                    <BoxView HeightRequest="1"
+                             WidthRequest="310"
+                             HorizontalOptions="Center"
+                             Color="{DynamicResource Primaria}"
+                             VerticalOptions="StartAndExpand"/>
+                    <exames:ListaExamesPacienteView BindingContext="{Binding ViewModel}" 
+                                                    IsVisible="{Binding CarregadoExames}"
+                                                    VerticalOptions="Start"/>
+                    <ActivityIndicator HorizontalOptions="CenterAndExpand"
+                                       IsVisible="{Binding CarregandoExames}"
+                                       IsRunning="{Binding CarregandoExames}"/>
+
+                    <StackLayout IsVisible="{Binding NaoTemExames}" VerticalOptions="Start">
+                            <Label HorizontalOptions="Center" Style="{DynamicResource LabelDetalhes}">Paciente sem exames</Label>
+                    </StackLayout>
+
+
+                    <Label FontSize="14"
+                           Margin="0,0,0,0"
+                           TextColor="{DynamicResource Primaria}"
+                           HorizontalOptions="CenterAndExpand">Medicamentos</Label>
+                    <BoxView HeightRequest="1"
+                             WidthRequest="310"
+                             HorizontalOptions="Center"
+                             Color="{DynamicResource Primaria}"/>
+                    <medicamentos:ListaMedicamentosPacienteView 
+                        BindingContext="{Binding ViewModel}" 
+                        VerticalOptions="Start"
+                        IsVisible="{Binding CarregadoMedicamentos}"/>
+                    <ActivityIndicator HorizontalOptions="CenterAndExpand"
+                                       IsVisible="{Binding CarregandoMedicamentos}"
+                                       IsRunning="{Binding CarregandoMedicamentos}"/>
+                    <StackLayout IsVisible="{Binding NaoTemMedicamentos}"  VerticalOptions="Start">
+                            <Label HorizontalOptions="Center" Style="{DynamicResource LabelDetalhes}">Paciente sem medicamentos prescritos</Label>
+                    </StackLayout>
+
+                    <StackLayout IsVisible="{Binding MostraDocumentos}">
+
+                        <Label FontSize="14"
+                           Margin="0,0,0,0"
+                           TextColor="{DynamicResource Primaria}"
+                           HorizontalOptions="CenterAndExpand"
+                           VerticalOptions="StartAndExpand">Documentos
+                        </Label>
+                        <BoxView HeightRequest="1"
+                             WidthRequest="310"
+                             HorizontalOptions="Center"                            
+                             VerticalOptions="StartAndExpand"
+                             Color="{DynamicResource Primaria}"/>
+                        <documentosEletronicos:DocumentosEletronicosPacienteView IsVisible="{Binding CarregadoDocumentos}" />
+                        <ActivityIndicator HorizontalOptions="CenterAndExpand"
+                                           IsVisible="{Binding CarregandoDocumentos}"
+                                           IsRunning="{Binding CarregandoDocumentos}"/>
+
+                        <StackLayout IsVisible="{Binding NaoTemDocumentos}" VerticalOptions="Start">
+                                <Label HorizontalOptions="Center" Style="{DynamicResource LabelDetalhes}">Paciente sem documentos</Label>
+                        </StackLayout>
+                        </StackLayout>
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Hmed.Agendas.ListaAgendaItemTemplate"
+             >
+    <ContentView.Content>
+        <StackLayout  HeightRequest="70"                                           
+                     Orientation="Horizontal" 
+                     Margin="6" 
+                     Spacing="10"
+                     VerticalOptions="StartAndExpand">
+            <Frame Padding="1" HasShadow="False" 
+                   VerticalOptions="CenterAndExpand"                   
+                   CornerRadius="4" 
+                   BackgroundColor="{DynamicResource CinzaClaro}"
+                   OutlineColor="{ DynamicResource CinzaClaro}">
+                <Frame  OutlineColor="{ DynamicResource CinzaClaro}" 
+                    WidthRequest="60"
+                    CornerRadius="5"      
+                    BackgroundColor="{ DynamicResource AzulClaro }"
+                    Padding="15">
+                    <Label 
+                       Style="{DynamicResource LabelPequeno}"
+                       Text="{Binding HorarioFormatado}"      
+                       TextColor="{DynamicResource CinzaClaroV2} "
+                       HorizontalTextAlignment="Center"
+                       VerticalOptions="CenterAndExpand"/>
+                </Frame>
+            </Frame>
+            <BoxView HeightRequest="60" 
+                     WidthRequest="1" 
+                     Color="{DynamicResource Verde}" 
+                     VerticalOptions="CenterAndExpand" />
+            <StackLayout Spacing="0" VerticalOptions="CenterAndExpand">
+                <Label Text="{Binding Paciente.Nome}" 
+                       TextColor="{DynamicResource Primaria}"
+                       FontAttributes="Bold"
+                       Style="{DynamicResource LabelPequeno}" />
+                <Label Text="{Binding Paciente.Idade}"
+                       Style="{DynamicResource LabelPequeno}"/>
+                <Label Text="{Binding Paciente.Sexo}"
+                       Style="{DynamicResource LabelPequeno}"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

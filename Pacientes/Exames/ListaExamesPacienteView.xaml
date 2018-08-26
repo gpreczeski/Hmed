@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:exames="clr-namespace:Hmed.Pacientes.Exames;assembly=Hmed"
+             x:Class="Hmed.Pacientes.Exames.ListaExamesPacienteView">
+  <ContentView.Content>
+      <ListView                           
+          ItemsSource="{Binding Exames}"
+          SeparatorColor="{DynamicResource CinzaClaroV2}"
+          Margin="16,0" 
+          ItemSelected="OnExameClicked"
+          x:Name="ListaExames"          
+          VerticalOptions="Start"
+          HeightRequest="{Binding ListaExamesHeight}"
+          RowHeight="40">
+          <ListView.ItemTemplate>
+              <DataTemplate>
+                  <ViewCell>
+                      <exames:ListaExamesPacienteItemTemplateView></exames:ListaExamesPacienteItemTemplateView>
+                  </ViewCell>
+              </DataTemplate>
+          </ListView.ItemTemplate>
+      </ListView>
+    </ContentView.Content>
+</ContentView>

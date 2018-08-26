@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:agenda="clr-namespace:Hmed.Agendas;assembly=Hmed" xmlns:ac="clr-namespace:Hmed.ApplicationComponents;assembly=Hmed" x:Class="Hmed.Agendas.AgendaPage" Title="Agenda">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Icon="ic_date_range_white_toolbar.png" Clicked="DatePicker_OnClicked">
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout>
+            <Label IsVisible="{Binding NaoTemAgendas}" Text="{Binding DataFormatada}" HorizontalOptions="Center" Margin="0,220,0,0" FontSize="Medium">
+            </Label>
+            <Label IsVisible="{Binding NaoTemAgendas}" Text="Você não tem agenda neste dia." HorizontalOptions="Center">
+            </Label>
+            <ActivityIndicator VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" IsRunning="{Binding Carregando}" IsVisible="{Binding Carregando}" />
+            <ListView VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" ItemsSource="{Binding Agendas}" IsVisible="{Binding Carregado}" RowHeight="80" ItemSelected="OnAgendaSelecionada" x:Name="ListaDeAgendas" SeparatorVisibility="None">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <agenda:ListaAgendaItemTemplate>
+                            </agenda:ListaAgendaItemTemplate>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <!-- Hidden -->
+            <DatePicker 
+                    IsVisible="false" 
+                x:Name="DatePicker"
+                Unfocused="Handle_Unfocused"
+                    Date="{Binding DataSelecionada, Mode=TwoWay}" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

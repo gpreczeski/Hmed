@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:documentosEletronicos="clr-namespace:Hmed.Pacientes.DocumentosEletronicos;assembly=Hmed"
+             x:Class="Hmed.Pacientes.DocumentosEletronicos.DocumentosEletronicosPacienteView">
+    <ContentView.Content>
+        <ListView                           
+                ItemsSource="{Binding DocumentoEletronicos}"
+                SeparatorColor="{DynamicResource Verde}"
+                Margin="16,0"                 
+                x:Name="ListaDocumentos"          
+                VerticalOptions="Start"
+                ItemSelected="ListaDocumentos_OnItemSelected"
+                HeightRequest="{Binding ListaDocumentosHeigth}"
+                RowHeight="40">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <documentosEletronicos:DocumentoEletronicoItemTemplateView />
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </ContentView.Content>
+</ContentView>

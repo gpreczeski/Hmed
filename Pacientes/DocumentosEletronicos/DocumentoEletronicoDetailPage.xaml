@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Hmed.Pacientes.DocumentosEletronicos.DocumentoEletronicoDetailPage"
+             xmlns:applicationComponents="clr-namespace:Hmed.ApplicationComponents;assembly=Hmed" 
+             Title="{Binding Documento.Documento}">
+  <ContentPage.Content>
+        <StackLayout>
+            <StackLayout
+                                   HorizontalOptions="CenterAndExpand" 
+                                   VerticalOptions="CenterAndExpand"
+                         IsVisible="{Binding Carregando}">
+                <ActivityIndicator IsRunning="true"  Color="{DynamicResource Primaria}" />
+            </StackLayout>
+            <applicationComponents:UiWebView 
+                VerticalOptions="FillAndExpand" 
+                HorizontalOptions="FillAndExpand" 
+                Source="{Binding PdfUrl}"
+                IsVisible="{Binding Carregado}"
+            />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

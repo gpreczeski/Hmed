@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Hmed.Pacientes.ListaPacientesItemTemplateView">
+    <ContentView.Content>
+        <StackLayout HeightRequest="65"                      
+                     Orientation="Horizontal" 
+                     Margin="5" 
+                     Spacing="10"
+                     VerticalOptions="StartAndExpand">
+            <Frame Padding="1" HasShadow="False" 
+                   VerticalOptions="CenterAndExpand"                   
+                   CornerRadius="5" 
+                   BackgroundColor="{DynamicResource CinzaClaro}"
+                   OutlineColor="{ DynamicResource CinzaClaro}">
+                <Frame  OutlineColor="{ DynamicResource CinzaClaro}"                     
+                    WidthRequest="60"
+                    CornerRadius="5"
+                    BackgroundColor="{ DynamicResource AzulClaro }"                    
+                    Padding="15">
+                    <Label 
+                       Style="{DynamicResource LabelPequeno}"
+                       Text="{Binding LeitoComLabel}"
+                       TextColor="{DynamicResource CinzaClaroV2}"
+                       HorizontalTextAlignment="Center"
+                       VerticalOptions="CenterAndExpand"/>                    
+                </Frame>
+            </Frame>
+            <BoxView HeightRequest="40" 
+                     WidthRequest="1" 
+                     Color="{DynamicResource Verde}" 
+                     VerticalOptions="CenterAndExpand" />
+            <StackLayout Spacing="0" VerticalOptions="CenterAndExpand">
+                <Label Text="{Binding Nome}" 
+                       TextColor="{DynamicResource Primaria}"
+                       FontAttributes="Bold"
+                       Style="{DynamicResource LabelPequeno}" />
+                <Label Text="{Binding SexoIdadeFormatado}" 
+                       Style="{DynamicResource LabelPequeno}"/>
+                <Label Text="{Binding Convenio}" 
+                       Style="{DynamicResource LabelPequeno}"></Label>
+            </StackLayout>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

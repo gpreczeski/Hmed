@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Hmed.Pacientes.DocumentosEletronicos.DocumentoEletronicoItemTemplateView">
+  <ContentView.Content>
+      <StackLayout 
+          HeightRequest="40" 
+          VerticalOptions="StartAndExpand" 
+          Orientation="Horizontal"
+          Padding="0,0">
+          <Image Source="ic_insert_drive_file_dark.png"                    
+                 HeightRequest="30"
+                 VerticalOptions="CenterAndExpand" />
+            <Label Text="{Binding Documento}"                  
+                 TextColor="{DynamicResource CinzaEscuro}"
+                 Style="{DynamicResource LabelPequeno}"
+                 VerticalOptions="CenterAndExpand"/>
+
+          <Label TextColor="{DynamicResource Primaria}" 
+                 Style="{DynamicResource LabelPequeno}"
+                 Text="Ver Documento"
+                 HorizontalOptions="EndAndExpand"
+                 VerticalOptions="CenterAndExpand"/>
+      </StackLayout>
+    </ContentView.Content>
+</ContentView>

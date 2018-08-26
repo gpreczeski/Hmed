@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Hmed.Pacientes.Exames.ListaExamesPacienteItemTemplateView">
+  <ContentView.Content>
+
+
+        <StackLayout 
+                   HeightRequest="40" 
+                   VerticalOptions="StartAndExpand" 
+                   Orientation="Horizontal"
+                     Padding="0,0">
+            <Image Source="ic_insert_drive_file_dark.png"                    
+                   HeightRequest="30"
+                   VerticalOptions="CenterAndExpand" />
+
+            <StackLayout Orientation="Vertical"
+                        Padding="0,0" 
+                         Margin="0"
+                         Spacing="0"
+                         VerticalOptions="CenterAndExpand">
+                <Label Text="{Binding Nome}"                  
+                         TextColor="{DynamicResource CinzaEscuro}"
+                         Style="{DynamicResource LabelPequeno}"
+                         VerticalOptions="StartAndExpand"
+                         HorizontalOptions="StartAndExpand"
+                       FontAttributes="Bold"/>
+
+                <Label Text="{Binding DataFormatada}" 
+                     TextColor="{DynamicResource CinzaEscuro}"
+                     Style="{DynamicResource LabelPequeno}"
+                     VerticalOptions="StartAndExpand"
+                     HorizontalOptions="StartAndExpand"
+                       FontSize="12"/> 
+
+            </StackLayout>
+
+
+            <Label TextColor="{DynamicResource Primaria}" 
+                   Style="{DynamicResource LabelPequeno}"
+                   Text="Ver resultado"
+                   HorizontalOptions="EndAndExpand"
+                   VerticalOptions="CenterAndExpand"/>
+
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"             
+             xmlns:abstractions="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
+             xmlns:notificacoes="clr-namespace:Hmed.Notificacoes;assembly=Hmed"
+             x:Class="Hmed.Main.MainPageDetail"
+             Title="">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Perfil" Command="{Binding NavegarParaOPerfil}">
+            <ToolbarItem.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource">
+                    <On Platform="Android" Value="ic_settings_white_toolbar.png"/>
+                    <On Platform="iOS" Value="ic_settings_white_toolbar.png"/>
+                </OnPlatform>
+            </ToolbarItem.Icon>
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+    <StackLayout Spacing="0">
+        <StackLayout Margin="0" Padding="16,0,16,16" BackgroundColor="{DynamicResource Primaria}" Spacing="0">
+            <StackLayout HorizontalOptions="CenterAndExpand">
+                <abstractions:CircleImage Source="logo_hmed_primary.png"     
+                                      BorderColor="White"
+                                      BorderThickness="3"
+                                      HeightRequest="100"  
+                                      WidthRequest="100"
+                                      FillColor="{DynamicResource CinzaClaro}"
+                                      Aspect="AspectFill" 
+                                      HorizontalOptions="Center">
+                </abstractions:CircleImage>
+            </StackLayout>
+            <Label
+                    VerticalOptions="CenterAndExpand"
+                    HorizontalOptions="CenterAndExpand"
+                    HorizontalTextAlignment="Center"
+                    FontSize="22"
+                    TextColor="{DynamicResource CinzaClaroV2}" 
+                    Text="{Binding Medico.NomeFormatado}"/>
+
+            <StackLayout Orientation="Horizontal" Spacing="4" Padding="0" Margin="0,6,0,0" HorizontalOptions="CenterAndExpand">
+                <Image Source="ic_add_location_white.png" HeightRequest="16" WidthRequest="16" Margin="0"/>
+                <Label                                    
+                    VerticalOptions="CenterAndExpand"
+                HorizontalTextAlignment="Center"
+                Margin="0"
+                FontSize="10"
+                TextColor="{DynamicResource CinzaClaroV2}" 
+                Text="{ Binding NomeHospital }"/>
+            </StackLayout>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal" Padding="8,0" Opacity="50" BackgroundColor="{DynamicResource Verde}">
+            <StackLayout.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding NavegarParaOsPacientes}"></TapGestureRecognizer>
+            </StackLayout.GestureRecognizers>
+            <StackLayout HorizontalOptions="CenterAndExpand" WidthRequest="120"  Spacing="0" Padding="10">
+                <Label FontSize="20" HorizontalOptions="CenterAndExpand" TextColor="White" Text="{Binding NumeroPacientes}"></Label>
+                <Label FontSize="14" HorizontalOptions="CenterAndExpand" TextColor="White">Pacientes</Label>
+            </StackLayout>
+
+            <BoxView HeightRequest="40"
+                     WidthRequest="1"
+                     HorizontalOptions="Center"
+                     Color="{DynamicResource Primaria}"
+                     VerticalOptions="CenterAndExpand"/>
+
+            <StackLayout HorizontalOptions="CenterAndExpand" WidthRequest="120" Spacing="0" Padding="10">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding NavegarParaAAgenda}"></TapGestureRecognizer>
+                </StackLayout.GestureRecognizers>
+                <Label FontSize="20" HorizontalOptions="CenterAndExpand" TextColor="White" Text="{Binding NumeroAgendas}"></Label>
+                <Label FontSize="14" HorizontalOptions="CenterAndExpand" TextColor="White">Agendas</Label>
+            </StackLayout>
+        </StackLayout>
+        <ActivityIndicator VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" IsRunning="{Binding Carregando}" IsVisible="{Binding Carregando}"></ActivityIndicator>
+        <notificacoes:ListaDeNotificacoesView IsVisible="{Binding Carregado}" x:Name="Lista"></notificacoes:ListaDeNotificacoesView>        
+    </StackLayout>
+
+</ContentPage>

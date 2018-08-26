@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Hmed.Pacientes.Medicamentos.MedicamentosPacienteItemTemplateView">
+    <ContentView.Content>
+
+
+            <StackLayout
+                   VerticalOptions="StartAndExpand" 
+                   Orientation="Horizontal"
+                     Padding="6"
+                HeightRequest="60">
+                <Image Source="ic_pill.png"                    
+                   HeightRequest="20"
+                       WidthRequest="20"
+                       HorizontalOptions="Start"
+                   VerticalOptions="Start" />
+                <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Spacing="0">
+                <Label Text="{Binding Nome}"                  
+                     TextColor="{DynamicResource CinzaEscuro}"
+                     Style="{DynamicResource LabelDetalhes}"
+                     FontAttributes="Bold"
+                     VerticalOptions="Start"
+                     HeightRequest="{Binding ListaMedicamentosHeight}"
+                     HorizontalOptions="Start"
+                       />
+                <StackLayout VerticalOptions="StartAndExpand" 
+                         Orientation="Horizontal"
+                         Padding="0,0" Spacing="0">
+                    <Label Style="{DynamicResource LabelDetalhes}" HorizontalTextAlignment="Start" Text="{Binding Descricao}" />
+                </StackLayout>
+                </StackLayout>
+
+            </StackLayout>
+
+  
+    </ContentView.Content>
+</ContentView>
